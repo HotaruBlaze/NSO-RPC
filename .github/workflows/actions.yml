@@ -47,10 +47,14 @@ jobs:
         cd scripts &&
         ./build.sh &&
         cd ../client/dist &&
-        zip -yr mac.zip NSO-RPC.app/
+        zip -yr mac-portable.zip NSO-RPC.app/ &&
+        productbuild --component NSO-RPC.app /Applications NSO-RPC.pkg &&
+        zip -yr mac-installer.zip NSO-RPC.pkg
 
     - name: "Upload Build"
       if: matrix.os == 'macos-latest'
       uses: softprops/action-gh-release@v0.1.15
       with:
-        files: client/dist/mac.zip
+        files: |
+          client/dist/mac-installer.zip
+          client/dist/mac-portable.zip
