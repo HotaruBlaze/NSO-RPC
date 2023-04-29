@@ -362,6 +362,8 @@ class GUI(Ui_MainWindow):
         if True:
             self.label_17.setHidden(False)
             self.label_17.setText(os.getcwd())
+            if os.getcwd().startswith("/private"):
+                self.label_19.setText("This is a private folder!")
 
     def closeEvent(self, event = None):
         if self.mode == 1:
