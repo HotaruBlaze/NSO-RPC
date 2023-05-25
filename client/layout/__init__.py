@@ -190,7 +190,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Nintendo Switch Online Rich Presence"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "NSO-RPC - Phoenix's nxapi-znca-api build"))
         self.label.setText(_translate("MainWindow", " Right click \"Select this account\" and copy the link to proceed with linking the account selected to Nintendo Switch Online Rich Presence."))
         self.pushButton.setText(_translate("MainWindow", "Log In"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Paste the URL here!"))

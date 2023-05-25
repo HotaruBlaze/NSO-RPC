@@ -526,7 +526,7 @@ class GUI(Ui_MainWindow):
                 'targetID': client.api.targetID,
             }))
         dlg = QMessageBox()
-        dlg.setWindowTitle('NSO-RPC')
+        dlg.setWindowTitle('NSO-RPC - Phoenix\'s nxapi-znca-api Build')
         dlg.setText('You will need to restart the application in order for the changes to take place.\nSorry for the inconvenience.')
         sys.exit(dlg.exec_())
 

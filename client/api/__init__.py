@@ -221,10 +221,11 @@ class imink():
             'na_id ': str(na_id),
         }
 
-        self.url = 'https://api.imink.app'
+        self.url = ' https://nxapi-znca-api.fancy.org.uk/api/znca'
 
     def get(self):
-        log('Login from imink')
+        log('Notice: You are using a temporary build of NSO-RPC, that uses nxapi-znca-api instead of imink due to downtime issues currently.')
+        log('Login from nxapi-znca-api.fancy.org.uk')
         route = '/f'
 
         response = requests.post(self.url + route, headers = self.headers, data = json.dumps(self.body))
