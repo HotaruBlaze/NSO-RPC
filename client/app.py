@@ -1,9 +1,10 @@
 # Created by Deltaion Lee (MCMi460) on Github
 
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
+from qtpy.QtCore import *
+from qtpy.QtWidgets import *
+from qtpy.QtGui import *
 from layout import Ui_MainWindow
+
 import sys
 import threading
 import requests
@@ -359,6 +360,9 @@ class GUI(Ui_MainWindow):
         self.startOnLaunch = AnimatedToggle(self.page_3, checked_color = '#09ab44')
         self.startOnLaunch.setGeometry(QRect(101,160,60,41))
 
+        # Set window for debugging
+        MainWindow.setWindowTitle("Nintendo Switch Online Rich Presence "+ "[QT: "+PYQT_VERSION_STR+"]")
+        
         # [MacOS] Hide Buttons if running app.py directly.
         if platform.system() == "Darwin" and not isScriptBundled:
             self.startOnLaunch.setHidden(True)
