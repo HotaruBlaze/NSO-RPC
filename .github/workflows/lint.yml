@@ -1,0 +1,27 @@
+name: Format code
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.11
+          
+      - name: Format code with black
+        run: |
+          pip install black
+          black --exclude="client/layout/*" client/
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: ${{ github.actor }}
+          author_email: ${{ github.actor }}@users.noreply.github.com
+          message: "Format code with black"
+          add: "."
+          branch: ${{ github.ref }}
