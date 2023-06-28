@@ -1,11 +1,11 @@
-name: 'Build NSO-RPC'
+name: 'Build NSO-RPC - x86_64'
 on:
   release:
     types: [published]
 
 jobs:
   build:
-    name: 'Build NSO-RPC'
+    name: 'Build NSO-RPC - x86_64'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -44,7 +44,7 @@ jobs:
       run: |
         cd scripts &&
         python -m pip install pyqt6 &&
-        ./build.sh &&
+        bash ./build.sh &&
         cd ../client/dist &&
         ln -s /Applications "Applications (admin)" &&
         hdiutil create -fs HFS+ -srcfolder . -volname NSO-RPC mac-installer.dmg &&
