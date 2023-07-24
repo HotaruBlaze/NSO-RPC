@@ -22,7 +22,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: |
         cd scripts && 
-        python -m pip install pyqt6 &&
+        python -m pip install pyqt6 GitPython &&
         ./build.bat
 
     - name: "Upload Build"
@@ -43,7 +43,7 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         cd scripts &&
-        python -m pip install pyqt6 &&
+        python -m pip install pyqt6 GitPython &&
         bash ./build.sh &&
         cd ../client/dist &&
         ln -s /Applications "Applications (admin)" &&
@@ -64,12 +64,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    # MacOS Build
+    # MacOS Universal Build
     - name: "Install Python 3.11.4 and build NSO-RPC"
       run: |
         curl https://www.python.org/ftp/python/3.11.4/python-3.11.4-macos11.pkg -o python-3.11.4-macos11.pkg
         sudo installer -verbose -pkg python-3.11.4-macos11.pkg -target / &&
-        python3.11 -m pip install PyQt6 &&
+        python3.11 -m pip install PyQt6 GitPython &&
         cd scripts/macos-universal2 &&
         bash ./build.sh &&
         python3 debloat-qt.py &&
