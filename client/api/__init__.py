@@ -15,32 +15,40 @@ import pickle
 
 
 def getAppPath():
-    # If "NSO-RPC_Data" folder exists, assume the user wants to run NSO-RPC in "Portable mode".
-    loc = os.getcwd()
-    if sys.platform.startswith('darwin') and getattr(sys, 'frozen', False): # Cursed location hack that could be one line with regex probably
-        loc = os.path.abspath(loc).split('.app/Contents/')
-        if len(loc) > 1:
-            loc = '.app'.join(loc[:-1]).split('/')[:-1]
-            loc[0] = '/' + loc[0]
-        loc = os.path.join(*loc)
-    if os.path.isdir(os.path.join(loc, 'NSO-RPC_Data')):
-        return os.path.join(loc, 'NSO-RPC_Data')
+    application_path = ""
 
-    applicationPath = os.path.expanduser('~/Documents/NSO-RPC')
+    # Check for macOS platform and NSO-RPC freeze status
+    if sys.platform.startswith('darwin') and getattr(sys, 'frozen') == 'macosx_app':
+        # Get the application path for macOS
+        application_path = os.path.dirname(os.path.dirname(os.path.dirname(os.getcwd())))
+
+        # If the path starts with "/private", assume NSO-RPC is in Downloads folder.
+        if application_path.startswith("/private"):
+            application_path_tmp = application_path.split(os.path.sep)[-4:]
+            portable_data_path = os.path.join(os.path.expanduser('~/Downloads'), *application_path_tmp, 'NSO-RPC_Data')
+            if os.path.isdir(portable_data_path):
+                return portable_data_path
+
     # Windows allows you to move your UserProfile subfolders, Such as Documents, Videos, Music etc.
     # However os.path.expanduser does not actually check and assumes its in the default location.
     # This tries to correctly resolve the Documents path and fallbacks to default if it fails.
-    if platform.system() == 'Windows':
+    elif platform.system() == 'Windows':
         try:
             import ctypes.wintypes
             CSIDL_PERSONAL = 5  # My Documents
             SHGFP_TYPE_CURRENT = 0  # Get current, not default value
             buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
             ctypes.windll.shell32.SHGetFolderPathW(None, CSIDL_PERSONAL, None, SHGFP_TYPE_CURRENT, buf)
-            applicationPath = os.path.join(buf.value, 'NSO-RPC')
+            application_path = os.path.join(buf.value, 'NSO-RPC')
         except:
             pass
-    return applicationPath
+    else:
+        # Default path for other platforms
+        application_path = os.path.expanduser('~/Documents/NSO-RPC')
+
+    # Use Portable path if it exists, else use Default path
+    portable_data_path = os.path.join(application_path, 'NSO-RPC_Data')
+    return portable_data_path if os.path.isdir(portable_data_path) else application_path
 
 
 def log(info, time = time.time()):
