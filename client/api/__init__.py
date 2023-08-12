@@ -16,13 +16,10 @@ import pickle
 
 def getAppPath():
     # If "NSO-RPC_Data" folder exists, assume the user wants to run NSO-RPC in "Portable mode".
-    loc = os.getcwd()
-    if sys.platform.startswith('darwin') and getattr(sys, 'frozen', False): # Cursed location hack that could be one line with regex probably
-        loc = os.path.abspath(loc).split('.app/Contents/')
-        if len(loc) > 1:
-            loc = '.app'.join(loc[:-1]).split('/')[:-1]
-            loc[0] = '/' + loc[0]
-        loc = os.path.join(*loc)
+    if sys.platform.startswith('darwin') and getattr(sys, 'frozen') == 'macosx_app':
+        # Go two levels up to reach the directory containing NSO-RPC.app,
+        # then go one more level up to reach the desired directory where NSO-RPC.app is located.
+        loc = os.path.dirname(os.path.dirname(os.path.dirname(os.getcwd())))
     if os.path.isdir(os.path.join(loc, 'NSO-RPC_Data')):
         return os.path.join(loc, 'NSO-RPC_Data')
 

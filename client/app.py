@@ -35,11 +35,14 @@ except Exception as e:
 altLink = None
 
 # Helpful Wrapper code for handling autostart dependencies
-if getattr(sys, 'frozen', False):
-    isScriptBundled = True
+if hasattr(sys, 'frozen'):
+    if getattr(sys, 'frozen') == 'macosx_app':
+        isScriptBundled = True
+        # Code to run when the application is packaged using py2app on macOS
+    else:
+        isScriptBundled = False
+        # Code to run when the application is packaged but not on macOS.
 else:
-    isScriptBundled = False
-if not isScriptBundled:
     if platform.system() == 'Windows':
         try:
             import win32com.client
@@ -171,6 +174,7 @@ try:
             versionTag = [versionTag, '']
 except:
     versionTag = ['', '']
+
 
 def writeSettings():
     try:
