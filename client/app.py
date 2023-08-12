@@ -34,22 +34,6 @@ except Exception as e:
     raise e
 altLink = None
 
-# Helpful Wrapper code for handling autostart dependencies
-if getattr(sys, 'frozen', False):
-    isScriptBundled = True
-else:
-    isScriptBundled = False
-if not isScriptBundled:
-    if platform.system() == 'Windows':
-        try:
-            import win32com.client
-            import winshell
-        except:
-            print('Trying to Install required modules: "pypiwin32" and "winshell"\n')
-            os.system(" ".join([sys.executable, "-m pip install pypiwin32 winshell"]))
-        from win32com.client import Dispatch
-        from winshell import Shortcut
-
 # PyQt5 Variables
 style = """
 QWidget {
@@ -171,6 +155,7 @@ try:
             versionTag = [versionTag, '']
 except:
     versionTag = ['', '']
+
 
 def writeSettings():
     try:
