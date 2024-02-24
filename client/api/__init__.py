@@ -61,20 +61,21 @@ def log(info, time = time.time()):
 
 
 def getVersion():
-    for i in range(5):
-        try:
-            r = requests.get('https://apps.apple.com/us/app/nintendo-switch-online/id1234806557', timeout = 10)
-            break
-        except requests.RequestException as e:
-            log(f'Failed to get Apple\'s store page. Retrying... Error: {str(e)}')
-    else:
-        log('Failed to get Apple\'s store page after multiple retries.')
-    if r:
-        searchPattern = re.compile(r'Version\s*(\d\.\d\.\d)+')
-        version = searchPattern.search(r.text)
-        if version:
-            return version.group(1)
-    return ''
+    return '2.8.1'
+    # for i in range(5):
+    #     try:
+    #         r = requests.get('https://apps.apple.com/us/app/nintendo-switch-online/id1234806557', timeout = 10)
+    #         break
+    #     except requests.RequestException as e:
+    #         log(f'Failed to get Apple\'s store page. Retrying... Error: {str(e)}')
+    # else:
+    #     log('Failed to get Apple\'s store page after multiple retries.')
+    # if r:
+    #     searchPattern = re.compile(r'Version\s*(\d\.\d\.\d)+')
+    #     version = searchPattern.search(r.text)
+    #     if version:
+    #         return version.group(1)
+    # return ''
 
 
 client_id = '71b963c1b7b6d119'

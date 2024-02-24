@@ -312,7 +312,7 @@ class GUI(Ui_MainWindow):
         settings['smallImagePFP'] = mode
         writeSettings()
         client.smallImagePFP = mode
-    
+
     def setEShopButton(self, mode):
         global settings
         settings['eShopButton'] = mode
@@ -829,10 +829,10 @@ if __name__ == '__main__':
     client.friendcode = settings['friendcode']
     client.eShopButton = settings['eShopButton']
 
-    # Override version if overrideVersion is set in settings
-    if settings.get('overrideVersion') is not None:
-        print(log("Version override Detected: Replacing target version {} with {}".format(version, settings['overrideVersion'])))
-        version = settings['overrideVersion']
+    # # Override version if overrideVersion is set in settings
+    # if settings.get('overrideVersion') is not None:
+    #     print(log("Version override Detected: Replacing target version {} with {}".format(version, settings['overrideVersion'])))
+    #     version = settings['overrideVersion']
 
     window = GUI(MainWindow)
 
