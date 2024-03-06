@@ -423,7 +423,7 @@ class Session():
             webbrowser.open(response.history[0].url)
         except Exception as e:
             print(log(e))
-        print('Open this link: %s' % response.history[0].url)
+        print('Open this link: %s \n' % response.history[0].url)
         if altLink:
             altLink('<a href="%s" style="color: cyan;">Click here if your browser didn\'t open</a>' % response.history[0].url)
         tokenPattern = re.compile(r'(eyJhbGciOiJIUzI1NiJ9\.[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*)')
