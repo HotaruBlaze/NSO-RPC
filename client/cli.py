@@ -86,6 +86,7 @@ class Discord():
                             'user_lang': self.api.user_lang,
                             'targetID': self.api.targetID,
                         }))
+                        print("Set target user to %s" % self.api.targetID)
                 self.api.getSelf()
                 break
             except Exception as e:
