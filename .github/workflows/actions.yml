@@ -11,6 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+        pyqt_version: ['pyqt6', 'pyqt5']  # Reversed order to ensure PyQt6 is built first
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
@@ -18,18 +19,31 @@ jobs:
         python-version: 3.11.4
 
     # Windows Build
+    - name: "Set executable filename"
+      if: matrix.os == 'windows-latest'
+      run: |
+        if [ "${{ matrix.pyqt_version }}" = "pyqt6" ]; then
+          export EXECUTABLE_NAME="NSO-RPC.exe"
+        elif [ "${{ matrix.pyqt_version }}" = "pyqt5" ]; then
+          export EXECUTABLE_NAME="NSO-RPC-qt5.exe"
+        fi
     - name: "Build"
       if: matrix.os == 'windows-latest'
       run: |
         cd scripts &&
-        python -m pip install pyqt6 &&
+        python -m pip install ${{ matrix.pyqt_version }} &&
         ./build.bat
+    - name: "Rename executable"
+      if: matrix.os == 'windows-latest' && matrix.pyqt_version == 'pyqt5'
+      run: |
+        mv client/dist/NSO-RPC.exe client/dist/NSO-RPC-qt5.exe
 
     - name: "Upload Build"
       if: matrix.os == 'windows-latest'
       uses: softprops/action-gh-release@v0.1.15
       with:
-        files: client/dist/NSO-RPC.exe
+        files: |
+          client/dist/${{ env.EXECUTABLE_NAME }}
 
     # Linux Build
     - name: "Upload script"
