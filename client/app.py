@@ -20,7 +20,8 @@ MainWindow = QMainWindow()
 
 # NSO Variables
 session_token, user_lang, targetID = getToken(False)
-version = getVersion()
+# version = getVersion()
+version = "2.9.1"
 while not version:
     version, ok = QInputDialog.getText(MainWindow, 'Version Number', 'What is the current version of the Nintendo Switch Online Mobile app?\nThe App Store says it is %s (Please enter like X.X.X)\nEnter nothing and press Okay to be sent to the app store\'s website.' % version)
     if not ok:
@@ -312,7 +313,7 @@ class GUI(Ui_MainWindow):
         settings['smallImagePFP'] = mode
         writeSettings()
         client.smallImagePFP = mode
-    
+
     def setEShopButton(self, mode):
         global settings
         settings['eShopButton'] = mode
