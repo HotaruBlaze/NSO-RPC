@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+        os: ['windows-2022', 'ubuntu-22.04', 'macos-13']
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
@@ -19,28 +19,28 @@ jobs:
 
     # Windows Build
     - name: "Build"
-      if: matrix.os == 'windows-latest'
+      if: matrix.os == 'windows-2022'
       run: |
         cd scripts &&
         python -m pip install pyqt6 &&
         ./build.bat
 
     - name: "Upload Build"
-      if: matrix.os == 'windows-latest'
+      if: matrix.os == 'windows-2022'
       uses: softprops/action-gh-release@v0.1.15
       with:
         files: client/dist/NSO-RPC.exe
 
     # Linux Build
     - name: "Upload script"
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'ubuntu-22.04'
       uses: softprops/action-gh-release@v0.1.15
       with:
         files: scripts/linux.sh
 
     # MacOS Build
     - name: "Build"
-      if: matrix.os == 'macos-latest'
+      if: matrix.os == 'macos-13'
       run: |
         cd scripts &&
         bash ./build.sh &&
@@ -51,7 +51,7 @@ jobs:
         zip -yr mac-portable.zip NSO-RPC.app/
 
     - name: "Upload Build"
-      if: matrix.os == 'macos-latest'
+      if: matrix.os == 'macos-13'
       uses: softprops/action-gh-release@v0.1.15
       with:
         files: |
@@ -60,7 +60,7 @@ jobs:
 
   build-universal2:
     name: 'Build NSO-RPC - Universal2'
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v3
 
@@ -86,7 +86,7 @@ jobs:
           client/dist/mac-universal2-portable.zip
 
   get-hashes:
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-22.04"
     needs: ["build-x86_64", "build-universal2"]
     steps:
       - name: "Generate checksums.txt"
