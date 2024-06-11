@@ -1,0 +1,19 @@
+Collecting pypresence@ git+https://github.com/qwertyquerty/pypresence/@5b4cb5aa039c1561f1490abb333bd1cd1a69aaba
+  Using cached pypresence-4.3.0-py2.py3-none-any.whl
+Collecting qtwidgets@ git+https://github.com/MCMi460/python-qtwidgets@e0fdba848725749775aceefc5d29e15865667bf0
+  Using cached qtwidgets-1.1-py3-none-any.whl
+Requirement already satisfied: GitPython in /usr/local/lib/python3.10/dist-packages (3.1.43)
+Requirement already satisfied: pyinstaller in /usr/local/lib/python3.10/dist-packages (6.8.0)
+Requirement already satisfied: pyinstaller-hooks-contrib==2024.6 in /usr/local/lib/python3.10/dist-packages (2024.6)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from -r ../client/requirements.txt (line 1)) (2.25.1)
+Requirement already satisfied: qtpy in /usr/local/lib/python3.10/dist-packages (from -r ../client/requirements.txt (line 3)) (2.4.1)
+Requirement already satisfied: autopep8 in /usr/local/lib/python3.10/dist-packages (from -r ../client/requirements.txt (line 4)) (2.2.0)
+Requirement already satisfied: charset_normalizer<3.0 in /usr/local/lib/python3.10/dist-packages (from -r ../client/requirements.txt (line 7)) (2.1.1)
+Requirement already satisfied: setuptools>=42.0.0 in /usr/lib/python3/dist-packages (from pyinstaller-hooks-contrib==2024.6) (59.6.0)
+Requirement already satisfied: packaging>=22.0 in /usr/local/lib/python3.10/dist-packages (from pyinstaller-hooks-contrib==2024.6) (24.1)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /usr/local/lib/python3.10/dist-packages (from GitPython) (4.0.11)
+Requirement already satisfied: altgraph in /usr/local/lib/python3.10/dist-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: pycodestyle>=2.11.0 in /usr/local/lib/python3.10/dist-packages (from autopep8->-r ../client/requirements.txt (line 4)) (2.11.1)
+Requirement already satisfied: tomli in /usr/local/lib/python3.10/dist-packages (from autopep8->-r ../client/requirements.txt (line 4)) (2.0.1)
+Requirement already satisfied: markdown in /usr/local/lib/python3.10/dist-packages (from qtwidgets@ git+https://github.com/MCMi460/python-qtwidgets@e0fdba848725749775aceefc5d29e15865667bf0->-r ../client/requirements.txt (line 5)) (3.6)
+Requirement already satisfied: smmap<6,>=3.0.1 in /usr/local/lib/python3.10/dist-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)

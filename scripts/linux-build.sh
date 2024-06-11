@@ -40,6 +40,3 @@ python _version.py
 
 # Build the executable using PyInstaller
 pyinstaller --onefile --clean --noconsole --exclude-module autopep8 --noupx --add-data "*.png:." --add-data "version.txt:." --icon=icon.ico --name=NSO-RPC ../client/app.py
-
-# Open the 'dist' directory
-xdg-open ./dist

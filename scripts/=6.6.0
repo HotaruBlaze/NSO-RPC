@@ -1,0 +1,55 @@
+Collecting pypresence@ git+https://github.com/qwertyquerty/pypresence/@5b4cb5aa039c1561f1490abb333bd1cd1a69aaba
+  Cloning https://github.com/qwertyquerty/pypresence/ (to revision 5b4cb5aa039c1561f1490abb333bd1cd1a69aaba) to /tmp/pip-install-6yfy8hct/pypresence_c11c03fcf1f74f0d97c9c11a801be399
+  Resolved https://github.com/qwertyquerty/pypresence/ to commit 5b4cb5aa039c1561f1490abb333bd1cd1a69aaba
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting qtwidgets@ git+https://github.com/MCMi460/python-qtwidgets@e0fdba848725749775aceefc5d29e15865667bf0
+  Cloning https://github.com/MCMi460/python-qtwidgets (to revision e0fdba848725749775aceefc5d29e15865667bf0) to /tmp/pip-install-6yfy8hct/qtwidgets_ce806e84d1ab4fcb9a1b25406f9294f5
+  Resolved https://github.com/MCMi460/python-qtwidgets to commit e0fdba848725749775aceefc5d29e15865667bf0
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting GitPython
+  Using cached GitPython-3.1.43-py3-none-any.whl (207 kB)
+Collecting pyinstaller
+  Using cached pyinstaller-6.8.0-py3-none-manylinux2014_x86_64.whl (683 kB)
+Collecting pyinstaller-hooks-contrib==2024.6
+  Using cached pyinstaller_hooks_contrib-2024.6-py2.py3-none-any.whl (339 kB)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from -r ../client/requirements.txt (line 1)) (2.25.1)
+Collecting qtpy
+  Using cached QtPy-2.4.1-py3-none-any.whl (93 kB)
+Collecting autopep8
+  Using cached autopep8-2.2.0-py2.py3-none-any.whl (45 kB)
+Collecting charset_normalizer<3.0
+  Using cached charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Requirement already satisfied: setuptools>=42.0.0 in /usr/lib/python3/dist-packages (from pyinstaller-hooks-contrib==2024.6) (59.6.0)
+Collecting packaging>=22.0
+  Using cached packaging-24.1-py3-none-any.whl (53 kB)
+Collecting gitdb<5,>=4.0.1
+  Using cached gitdb-4.0.11-py3-none-any.whl (62 kB)
+Collecting altgraph
+  Downloading altgraph-0.17.4-py2.py3-none-any.whl (21 kB)
+Collecting pycodestyle>=2.11.0
+  Downloading pycodestyle-2.11.1-py2.py3-none-any.whl (31 kB)
+Collecting tomli
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Collecting markdown
+  Downloading Markdown-3.6-py3-none-any.whl (105 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 105.4/105.4 KB 4.7 MB/s eta 0:00:00
+Collecting smmap<6,>=3.0.1
+  Downloading smmap-5.0.1-py3-none-any.whl (24 kB)
+Building wheels for collected packages: pypresence, qtwidgets
+  Building wheel for pypresence (setup.py): started
+  Building wheel for pypresence (setup.py): finished with status 'done'
+  Created wheel for pypresence: filename=pypresence-4.3.0-py2.py3-none-any.whl size=12015 sha256=98c470aa01267fdd026cb276209553c917596ab6bc0578bd62f56d5398ef5951
+  Stored in directory: /root/.cache/pip/wheels/b9/da/41/3893a1a791c6fd5acaf11dfd06a0819ff87964c0054cfc8bd3
+  Building wheel for qtwidgets (setup.py): started
+  Building wheel for qtwidgets (setup.py): finished with status 'done'
+  Created wheel for qtwidgets: filename=qtwidgets-1.1-py3-none-any.whl size=18934 sha256=0df69e74db6086499594fad709959c29f59c4f4f357241a825a4de3612449827
+  Stored in directory: /root/.cache/pip/wheels/cf/61/b5/172054bda8775043201814a09b578f49206f91944c61e9386b
+Successfully built pypresence qtwidgets
+Installing collected packages: altgraph, tomli, smmap, pypresence, pycodestyle, packaging, markdown, charset_normalizer, qtwidgets, qtpy, pyinstaller-hooks-contrib, gitdb, autopep8, pyinstaller, GitPython
+  Attempting uninstall: packaging
+    Found existing installation: packaging 21.3
+    Not uninstalling packaging at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'packaging'. No files were found to uninstall.
+Successfully installed GitPython-3.1.43 altgraph-0.17.4 autopep8-2.2.0 charset_normalizer-2.1.1 gitdb-4.0.11 markdown-3.6 packaging-24.1 pycodestyle-2.11.1 pyinstaller-6.8.0 pyinstaller-hooks-contrib-2024.6 pypresence-4.3.0 qtpy-2.4.1 qtwidgets-1.1 smmap-5.0.1 tomli-2.0.1
