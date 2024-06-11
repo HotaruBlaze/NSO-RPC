@@ -45,16 +45,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11.4
-      - name: Upload script
+      - name: Build 
         run: |
           cd scripts &&
-          chmod +x linux.sh
+          chmod +x linux-build.sh linux.sh &&
+          apt-get install libgl1-mesa-glx libegl1-mesa libxkbcommon-x11-0 &&
+          pip install PyQt6 && 
+          bash linux-build.sh
         continue-on-error: false
+      - name: Rename executable
+        run: mv client/dist/NSO-RPC client/dist/NSO-RPC-linux-standalone
       - name: Upload Build
         if: github.event_name != 'pull_request'
         uses: softprops/action-gh-release@v2
         with:
-          files: scripts/linux.sh
+          files: | 
+            scripts/linux.sh
+            client/dist/NSO-RPC-linux-standalone
   build-macos:
     name: Build NSO-RPC - MacOS
     runs-on: macos-latest
