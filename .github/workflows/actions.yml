@@ -49,7 +49,7 @@ jobs:
         run: |
           cd scripts &&
           chmod +x linux-build.sh linux.sh &&
-          apt-get install libgl1-mesa-glx libegl1-mesa libxkbcommon-x11-0 &&
+          sudo apt-get install libgl1-mesa-glx libegl1-mesa libxkbcommon-x11-0 &&
           pip install PyQt6 && 
           bash linux-build.sh
         continue-on-error: false
